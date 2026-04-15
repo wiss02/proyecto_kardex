@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Listado de personas</h1>
+
+<a href="/create" class="btn btn-success mb-3">Nuevo registro</a>
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Fecha Nac</th>
+            <th colspan="2" class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in personas %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.telefono }}</td>
+            <td>{{ item.fecha_nac }}</td>
+            <td>
+                <a href="/edit/{{ item.id }}" class="btn btn-warning btn-sm">Editar</a>
+            </td>
+            <td>
+                <a href="/delete/{{ item.id }}" class="btn btn-danger btn-sm"
+                onclick="return(confirm('¿Está seguro de eliminar este registro?'))">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if personas|length == 0 %}
+<div class="alert alert-info mt-3">
+    No hay registros. <a href="/create">Crear uno nuevo</a>
+</div>
+{% endif %}
+
+{% endblock %}

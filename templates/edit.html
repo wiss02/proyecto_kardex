@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Editar registro</h2>
+
+<form action="/update" method="post" class="needs-validation" novalidate>
+    <input type="hidden" name="id" value="{{ persona.id }}">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ persona.nombre }}" placeholder="Nombre de la persona" required>
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" value="{{ persona.telefono }}" placeholder="Teléfono de la persona" required>
+    </div>
+    <div class="mb-3">
+        <label for="fecha_nac" class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" value="{{ persona.fecha_nac }}" required>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <button type="submit" class="btn btn-primary">Grabar cambios</button>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+{% endblock %}
